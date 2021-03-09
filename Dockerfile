@@ -126,7 +126,7 @@ RUN mkdir -p /home/renderer/src \
 RUN mkdir -p /home/renderer/src \
  && cd /home/renderer/src \
 # && git clone --single-branch --branch v5.2.0 https://github.com/gravitystorm/openstreetmap-carto.git --depth 1 \
- && git clone --single-branch --branch master https://github.com/tilery/pianoforte.git --depth 1 \
+ && git clone --single-branch --branch master https://github.com/tilery/pianoforte.git --depth 1
 
 
 # Configure renderd

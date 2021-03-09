@@ -74,6 +74,7 @@ RUN apt-get install -y --no-install-recommends \
   unzip \
   wget \
   zlib1g-dev \
+  nano \
 && apt-get clean autoclean \
 && apt-get autoremove --yes \
 && rm -rf /var/lib/{apt,dpkg,cache,log}/
@@ -135,7 +136,7 @@ RUN mkdir -p /home/renderer/src \
 # Configure renderd
 RUN sed -i 's/renderaccount/renderer/g' /usr/local/etc/renderd.conf \
  && sed -i 's/\/truetype//g' /usr/local/etc/renderd.conf \
- && sed -i 's/hot/tile/g' /usr/local/etc/renderd.conf
+ && sed -i 's/hot/osm_tiles/g' /usr/local/etc/renderd.conf
 
 # Configure Apache
 RUN mkdir /var/lib/mod_tile \

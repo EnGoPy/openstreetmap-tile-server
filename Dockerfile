@@ -125,18 +125,15 @@ RUN mkdir -p /home/renderer/src \
 # Configure stylesheet
 RUN mkdir -p /home/renderer/src \
  && cd /home/renderer/src \
- && git clone --single-branch --branch v5.2.0 https://github.com/gravitystorm/openstreetmap-carto.git --depth 1 \
- && cd openstreetmap-carto \
- && rm -rf .git \
- && npm install -g carto@0.18.2 \
- && carto project.mml > mapnik.xml \
- && scripts/get-shapefiles.py \
- && rm /home/renderer/src/openstreetmap-carto/data/*.zip
+# && git clone --single-branch --branch v5.2.0 https://github.com/gravitystorm/openstreetmap-carto.git --depth 1 \
+ && git clone --single-branch --branch master https://github.com/tilery/pianoforte.git --depth 1 \
+
 
 # Configure renderd
 RUN sed -i 's/renderaccount/renderer/g' /usr/local/etc/renderd.conf \
  && sed -i 's/\/truetype//g' /usr/local/etc/renderd.conf \
  && sed -i 's/hot/osm_tiles/g' /usr/local/etc/renderd.conf
+ && sed -i 's/openstreetmap-carto\/mapnik.xml/pianoforte\/dist\/forteen.xml/g' /usr/local/etc/renderd.conf
 
 # Configure Apache
 RUN mkdir /var/lib/mod_tile \

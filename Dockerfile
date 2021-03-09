@@ -132,7 +132,7 @@ RUN mkdir -p /home/renderer/src \
 # Configure renderd
 RUN sed -i 's/renderaccount/renderer/g' /usr/local/etc/renderd.conf \
  && sed -i 's/\/truetype//g' /usr/local/etc/renderd.conf \
- && sed -i 's/hot/osm_tiles/g' /usr/local/etc/renderd.conf
+ && sed -i 's/hot/osm_tiles/g' /usr/local/etc/renderd.conf \
  && sed -i 's/openstreetmap-carto\/mapnik.xml/pianoforte\/dist\/forteen.xml/g' /usr/local/etc/renderd.conf
 
 # Configure Apache

@@ -126,12 +126,12 @@ RUN mkdir -p /home/renderer/src \
 RUN mkdir -p /home/renderer/src \
  && mkdir -p /home/renderer/src/copy \
  && cd /home/renderer/src/copy \
- && git clone --single-branch --branch style/traffic_calm https://github.com/EnGoPy/openstreetmap-carto.git  \
+ && git clone --single-branch --branch calm_drive_520 https://github.com/EnGoPy/openstreetmap-carto.git  \
  && cd /home/renderer/src \
- && git clone --single-branch --branch v5.3.1 https://github.com/gravitystorm/openstreetmap-carto.git --depth 1 \
+ && git clone --single-branch --branch v5.2.0 https://github.com/gravitystorm/openstreetmap-carto.git --depth 1 \
  && rm -rf /home/renderer/src/openstreetmap-carto/style \
- && rm -rf /home/renderer/src/openstreetmap-carto/project.mml \
- && cp -pr /home/renderer/src/copy/openstreetmap-carto/project.mml /home/renderer/src/openstreetmap-carto \
+# && rm -rf /home/renderer/src/openstreetmap-carto/project.mml \
+# && cp -pr /home/renderer/src/copy/openstreetmap-carto/project.mml /home/renderer/src/openstreetmap-carto \
  && cp -pr /home/renderer/src/copy/openstreetmap-carto/style /home/renderer/src/openstreetmap-carto \
  && cd /home/renderer/src/openstreetmap-carto \
  && rm -rf .git \

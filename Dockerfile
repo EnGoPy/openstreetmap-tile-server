@@ -125,7 +125,7 @@ RUN mkdir -p /home/renderer/src \
 # Configure stylesheet
 RUN mkdir -p /home/renderer/src \
  && cd /home/renderer/src \
- && git clone --single-branch --branch style/traffic_calm https://github.com/EnGoPy/openstreetmap-carto.git --depth 1 \
+ && git clone --single-branch --branch style/traffic_calm https://github.com/EnGoPy/openstreetmap-carto.git  \
  && chmod +x  /home/renderer/src/openstreetmap-carto/scripts/get-shapefiles.py \
  && cd openstreetmap-carto \
  && rm -rf .git \

@@ -126,7 +126,7 @@ RUN mkdir -p /home/renderer/src \
 RUN mkdir -p /home/renderer/src \
  && cd /home/renderer/src \
  && git clone --single-branch --branch style/traffic_calm https://github.com/EnGoPy/openstreetmap-carto.git --depth 1 \
- && chmod -R user:group ./openstreetmap-carto \
+ && chmod +x  /home/renderer/src/openstreetmap-carto/scripts/get-shapefiles.py \
  && cd openstreetmap-carto \
  && rm -rf .git \
  && npm install -g carto@0.18.2 \

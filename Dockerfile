@@ -130,6 +130,8 @@ RUN mkdir -p /home/renderer/src \
  && cd /home/renderer/src \
  && git clone --single-branch --branch v5.2.0 https://github.com/gravitystorm/openstreetmap-carto.git --depth 1 \
  && rm -rf /home/renderer/src/openstreetmap-carto/style \
+ && rm -rf /home/renderer/src/openstreetmap-carto/project.mml \
+ && cp -pr /home/renderer/src/copy/openstreetmap-carto/project.mml /home/renderer/src/openstreetmap-carto \
  && cp -pr /home/renderer/src/copy/openstreetmap-carto/style /home/renderer/src/openstreetmap-carto \
  && cd /home/renderer/src/openstreetmap-carto \
  && rm -rf .git \

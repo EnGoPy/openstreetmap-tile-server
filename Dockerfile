@@ -128,7 +128,7 @@ RUN mkdir -p /home/renderer/src \
  && git clone --single-branch --branch style/traffic_calm https://github.com/EnGoPy/openstreetmap-carto.git  \
  && cd /home/renderer/src \
  && git clone --single-branch --branch v5.2.0 https://github.com/gravitystorm/openstreetmap-carto.git --depth 1 \
- && cp -pr /home/renderer/src/copy/openstreetmap-carto/style /home/renderer/src/copy/openstreetmap-carto \
+ && cp -pr /home/renderer/src/copy/openstreetmap-carto/style /home/renderer/src/openstreetmap-carto \
  && rm -rf /home/renderer/src/openstreetmap-carto/style \
  && cd /home/renderer/src/openstreetmap-carto \
  && rm -rf .git \

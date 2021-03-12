@@ -90,10 +90,6 @@ RUN wget https://download.osgeo.org/postgis/source/postgis-3.1.1.tar.gz -O postg
  && make -j $(nproc) install \
  && cd .. && rm -rf postgis_src
 
-RUN apt-get install -y --no-install-recommends \
- python3-yaml \
- python3-requests
-
 # Set up renderer user
 RUN adduser --disabled-password --gecos "" renderer
 
@@ -125,6 +121,10 @@ RUN mkdir -p /home/renderer/src \
  && make -j $(nproc) install-mod_tile \
  && ldconfig \
  && cd ..
+
+RUN apt-get install -y --no-install-recommends \
+  python3-yaml \
+  python3-requests
 
 # Configure stylesheet
 RUN mkdir -p /home/renderer/src \

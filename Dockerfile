@@ -18,7 +18,7 @@ RUN apt-get update \
   && apt-get update \
   && apt-get install -y nodejs
 
-RUN apt-get install -y --no-install-recommends \
+RUN apt-get install -y --no-install-recommends --fix-missing \
   apache2 \
   apache2-dev \
   autoconf \
@@ -68,7 +68,7 @@ RUN apt-get install -y --no-install-recommends \
   python3-lxml \
   python3-psycopg2 \
   python3-shapely \
-#  python3-yaml \
+  python3-yaml \
   sudo \
   tar \
   ttf-unifont \

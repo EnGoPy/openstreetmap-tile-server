@@ -68,6 +68,7 @@ RUN apt-get install -y --no-install-recommends \
   python3-lxml \
   python3-psycopg2 \
   python3-shapely \
+  python3-yaml \
   sudo \
   tar \
   ttf-unifont \

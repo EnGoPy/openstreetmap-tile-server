@@ -124,7 +124,10 @@ RUN mkdir -p /home/renderer/src \
 
 RUN apt-get install -y --no-install-recommends \
   python3-yaml \
-  python3-requests
+  python3-requests \
+  python3-pip
+
+RUN pip3 install psycopg2
 
 # Configure stylesheet
 RUN mkdir -p /home/renderer/src \

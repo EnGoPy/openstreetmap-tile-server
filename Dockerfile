@@ -18,7 +18,7 @@ RUN apt-get update \
   && apt-get update \
   && apt-get install -y nodejs
 
-RUN apt-get install -y --no-install-recommends --fix-missing \
+RUN apt-get install -y --no-install-recommends \
   apache2 \
   apache2-dev \
   autoconf \
@@ -68,7 +68,6 @@ RUN apt-get install -y --no-install-recommends --fix-missing \
   python3-lxml \
   python3-psycopg2 \
   python3-shapely \
-  python3-yaml \
   sudo \
   tar \
   ttf-unifont \
@@ -90,6 +89,8 @@ RUN wget https://download.osgeo.org/postgis/source/postgis-3.1.1.tar.gz -O postg
  && make -j $(nproc) \
  && make -j $(nproc) install \
  && cd .. && rm -rf postgis_src
+
+RUN apt-get install -y --no-install-recommends python3-yaml
 
 # Set up renderer user
 RUN adduser --disabled-password --gecos "" renderer

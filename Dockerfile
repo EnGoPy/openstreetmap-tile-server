@@ -155,6 +155,10 @@ RUN mkdir /var/lib/mod_tile \
  && a2enconf mod_tile && a2enconf mod_headers
 COPY apache.conf /etc/apache2/sites-available/000-default.conf
 COPY leaflet-demo.html /var/www/html/index.html
+COPY driver_day.html /var/www/html/driver_day.html
+COPY driver_night.html /var/www/html/driver_night.html
+COPY passenger_day.html /var/www/html/passenger_day.html
+COPY passenger_night.html /var/www/html/passenger_night.html
 RUN ln -sf /dev/stdout /var/log/apache2/access.log \
  && ln -sf /dev/stderr /var/log/apache2/error.log
 

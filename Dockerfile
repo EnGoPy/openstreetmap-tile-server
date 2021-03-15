@@ -124,18 +124,31 @@ RUN mkdir -p /home/renderer/src \
 
 # Configure stylesheet
 RUN mkdir -p /home/renderer/src \
- && mkdir -p /home/renderer/src/copy \
- && cd /home/renderer/src/copy \
- && git clone --single-branch --branch calm_drive_520 https://github.com/EnGoPy/openstreetmap-carto.git  \
+ && npm install -g carto@0.18.2 \
+ # generate general AH style .xml
+ && mkdir -p /home/renderer/src/general \
+ && cd /home/renderer/src/general \
+ && rm -rf .git \
+ && git clone --single-branch --branch calm_drive_520 https://github.com/EnGoPy/openstreetmap-carto.git --depth 1  \
+ && carto project.mml > mapnik_general.xml \
+# generate driver_day style .xml
+ && mkdir -p /home/renderer/src/driver_day \
+ && cd /home/renderer/src/driver_day \
+ && rm -rf .git \
+ && git clone --single-branch --branch driver_day https://github.com/EnGoPy/openstreetmap-carto.git --depth 1  \
+ && carto project.mml > mapnik_driver_day.xml \
+# download general 5.2.0 branch
  && cd /home/renderer/src \
  && git clone --single-branch --branch v5.2.0 https://github.com/gravitystorm/openstreetmap-carto.git --depth 1 \
- && rm -rf /home/renderer/src/openstreetmap-carto/style \
-# && rm -rf /home/renderer/src/openstreetmap-carto/project.mml \
-# && cp -pr /home/renderer/src/copy/openstreetmap-carto/project.mml /home/renderer/src/openstreetmap-carto \
- && cp -pr /home/renderer/src/copy/openstreetmap-carto/style /home/renderer/src/openstreetmap-carto \
+# copy mapnik.xml's to working directory
+ && cp -p  /home/renderer/src/general/mapnik_general.xml /home/renderer/src/openstreetmap-carto \
+ && cp -p  /home/renderer/src/general/mapnik_driver_day.xml /home/renderer/src/openstreetmap-carto \
+# remove old repositories data
+ && rm -rf /home/renderer/src/general
+ && rm -rf /home/renderer/src/driver_day
+# remove old repositories
  && cd /home/renderer/src/openstreetmap-carto \
  && rm -rf .git \
- && npm install -g carto@0.18.2 \
  && carto project.mml > mapnik.xml \
  && scripts/get-shapefiles.py \
  && rm /home/renderer/src/openstreetmap-carto/data/*.zip

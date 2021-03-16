@@ -1,0 +1,17 @@
+
+
+[general]
+URI=/general/
+TILEDIR=/var/lib/mob_tile_general
+XML=/home/renderer/src/openstreetmap-carto/mapnik_general.xml
+HOST=localhost
+TILESIZE=256
+MAXZOOM=19
+
+[driver_day]
+URI=/driver_day/
+TILEDIR=/var/lib/mob_tile_driver_day
+XML=/home/renderer/src/openstreetmap-carto/mapnik_driver_day.xml
+HOST=localhost
+TILESIZE=256
+MAXZOOM=19

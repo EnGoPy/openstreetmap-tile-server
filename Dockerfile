@@ -128,14 +128,16 @@ RUN mkdir -p /home/renderer/src \
  # generate general AH style .xml
  && mkdir -p /home/renderer/src/general \
  && cd /home/renderer/src/general \
- && rm -rf .git \
  && git clone --single-branch --branch calm_drive_520 https://github.com/EnGoPy/openstreetmap-carto.git --depth 1  \
+ && cd ./openstreetmap-carto \
+ && rm -rf .git \
  && carto project.mml > mapnik_general.xml \
 # generate driver_day style .xml
  && mkdir -p /home/renderer/src/driver_day \
  && cd /home/renderer/src/driver_day \
- && rm -rf .git \
  && git clone --single-branch --branch driver_day https://github.com/EnGoPy/openstreetmap-carto.git --depth 1  \
+ && cd ./openstreetmap-carto \
+ && rm -rf .git \
  && carto project.mml > mapnik_driver_day.xml \
 # download general 5.2.0 branch
  && cd /home/renderer/src \
@@ -144,8 +146,8 @@ RUN mkdir -p /home/renderer/src \
  && cp -p  /home/renderer/src/general/mapnik_general.xml /home/renderer/src/openstreetmap-carto \
  && cp -p  /home/renderer/src/general/mapnik_driver_day.xml /home/renderer/src/openstreetmap-carto \
 # remove old repositories data
- && rm -rf /home/renderer/src/general
- && rm -rf /home/renderer/src/driver_day
+ && rm -rf /home/renderer/src/general \
+ && rm -rf /home/renderer/src/driver_day \
 # remove old repositories
  && cd /home/renderer/src/openstreetmap-carto \
  && rm -rf .git \
@@ -174,6 +176,14 @@ COPY passenger_day.html /var/www/html/passenger_day.html
 COPY passenger_night.html /var/www/html/passenger_night.html
 RUN ln -sf /dev/stdout /var/log/apache2/access.log \
  && ln -sf /dev/stderr /var/log/apache2/error.log
+
+#Configure for different styles
+COPY custom_style_configuration.txt /usr/local/etc
+RUN mkdir /var/lib/mod_tile_driver_day \
+ && mkdir /var/lib/mod_tile_general \
+ && chown renderer /var/lib/mod_tile_driver_day \
+ && chown renderer /var/lib/mod_tile_general \
+ && cat /usr/local/etc/custom_style_configuration.txt >> /usr/local/etc/renderd.conf
 
 # Configure PosgtreSQL
 COPY postgresql.custom.conf.tmpl /etc/postgresql/12/main/

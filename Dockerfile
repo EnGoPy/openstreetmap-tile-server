@@ -143,8 +143,8 @@ RUN mkdir -p /home/renderer/src \
  && cd /home/renderer/src \
  && git clone --single-branch --branch v5.2.0 https://github.com/gravitystorm/openstreetmap-carto.git --depth 1 \
 # copy mapnik.xml's to working directory
- && cp -p  /home/renderer/src/general/mapnik.xml /home/renderer/src/openstreetmap-carto/mapnik_general.xml \
- && cp -p  /home/renderer/src/driver_day/mapnik.xml /home/renderer/src/openstreetmap-carto/mapnik_driver_day.xml \
+ && cp -p  /home/renderer/src/general/openstreetmap-carto/mapnik.xml /home/renderer/src/openstreetmap-carto/mapnik_general.xml \
+ && cp -p  /home/renderer/src/driver_day/openstreetmap-carto/mapnik.xml /home/renderer/src/openstreetmap-carto/mapnik_driver_day.xml \
 # remove old repositories data
  && rm -rf /home/renderer/src/general \
  && rm -rf /home/renderer/src/driver_day \

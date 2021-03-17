@@ -131,20 +131,20 @@ RUN mkdir -p /home/renderer/src \
  && git clone --single-branch --branch calm_drive_520 https://github.com/EnGoPy/openstreetmap-carto.git --depth 1  \
  && cd ./openstreetmap-carto \
  && rm -rf .git \
- && carto project.mml > mapnik_general.xml \
+ && carto project.mml > mapnik.xml \
 # generate driver_day style .xml
  && mkdir -p /home/renderer/src/driver_day \
  && cd /home/renderer/src/driver_day \
  && git clone --single-branch --branch driver_day https://github.com/EnGoPy/openstreetmap-carto.git --depth 1  \
  && cd ./openstreetmap-carto \
  && rm -rf .git \
- && carto project.mml > mapnik_driver_day.xml \
+ && carto project.mml > mapnik.xml \
 # download general 5.2.0 branch
  && cd /home/renderer/src \
  && git clone --single-branch --branch v5.2.0 https://github.com/gravitystorm/openstreetmap-carto.git --depth 1 \
 # copy mapnik.xml's to working directory
- && cp -p  /home/renderer/src/general/mapnik_general.xml /home/renderer/src/openstreetmap-carto \
- && cp -p  /home/renderer/src/general/mapnik_driver_day.xml /home/renderer/src/openstreetmap-carto \
+ && cp -p  /home/renderer/src/general/mapnik.xml /home/renderer/src/openstreetmap-carto/mapnik_general.xml \
+ && cp -p  /home/renderer/src/driver_day/mapnik.xml /home/renderer/src/openstreetmap-carto/mapnik_driver_day.xml \
 # remove old repositories data
  && rm -rf /home/renderer/src/general \
  && rm -rf /home/renderer/src/driver_day \

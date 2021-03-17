@@ -1,5 +1,4 @@
 
-
 [general]
 URI=/general/
 TILEDIR=/var/lib/mob_tile_general

@@ -165,6 +165,10 @@ RUN sed -i 's/renderaccount/renderer/g' /usr/local/etc/renderd.conf \
 # Configure Apache
 RUN mkdir /var/lib/mod_tile \
  && chown renderer /var/lib/mod_tile \
+ && cp -p /var/lib/mod_tile /var/lib/mod_tile_driver_day \
+ && cp -p /var/lib/mod_tile /var/lib/mod_tile_general \
+ && cp -p /var/lib/mod_tile /var/lib/mod_tile_128 \
+ && cp -p /var/lib/mod_tile /var/lib/mod_tile_512 \
  && mkdir /var/run/renderd \
  && chown renderer /var/run/renderd \
  && echo "LoadModule tile_module /usr/lib/apache2/modules/mod_tile.so" >> /etc/apache2/conf-available/mod_tile.conf \
@@ -183,15 +187,7 @@ RUN ln -sf /dev/stdout /var/log/apache2/access.log \
 
 #Configure for different styles
 COPY custom_style_configuration.txt /usr/local/etc
-RUN mkdir /var/lib/mod_tile_driver_day \
- && mkdir /var/lib/mod_tile_general \
- && mkdir /var/lib/mod_tile_128 \
- && mkdir /var/lib/mod_tile_512 \
- && chown renderer /var/lib/mod_tile_driver_day \
- && chown renderer /var/lib/mod_tile_general \
- && chown renderer /var/lib/mod_tile_128 \
- && chown renderer /var/lib/mod_tile_512 \
- && cat /usr/local/etc/custom_style_configuration.txt >> /usr/local/etc/renderd.conf
+RUN cat /usr/local/etc/custom_style_configuration.txt >> /usr/local/etc/renderd.conf
 
 # Configure PosgtreSQL
 COPY postgresql.custom.conf.tmpl /etc/postgresql/12/main/

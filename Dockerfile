@@ -145,7 +145,8 @@ RUN mkdir -p /home/renderer/src \
 # copy mapnik.xml's to working directory
  && cp -p  /home/renderer/src/general/openstreetmap-carto/mapnik.xml /home/renderer/src/openstreetmap-carto/mapnik_general.xml \
  && cp -p  /home/renderer/src/driver_day/openstreetmap-carto/mapnik.xml /home/renderer/src/openstreetmap-carto/mapnik_driver_day.xml \
- && cp -p  /home/renderer/src/driver_day/openstreetmap-carto/mapnik.xml /home/renderer/src/openstreetmap-carto/mapnik_retina.xml \
+ && cp -p  /home/renderer/src/driver_day/openstreetmap-carto/mapnik.xml /home/renderer/src/openstreetmap-carto/mapnik_128.xml \
+ && cp -p  /home/renderer/src/driver_day/openstreetmap-carto/mapnik.xml /home/renderer/src/openstreetmap-carto/mapnik_512.xml \
 # remove old repositories data
  && rm -rf /home/renderer/src/general \
  && rm -rf /home/renderer/src/driver_day \
@@ -175,6 +176,8 @@ COPY driver_day.html /var/www/html/driver_day.html
 COPY driver_night.html /var/www/html/driver_night.html
 COPY passenger_day.html /var/www/html/passenger_day.html
 COPY passenger_night.html /var/www/html/passenger_night.html
+COPY 128.html /var/www/html/128.html
+COPY 512.html /var/www/html/512.html
 RUN ln -sf /dev/stdout /var/log/apache2/access.log \
  && ln -sf /dev/stderr /var/log/apache2/error.log
 
@@ -182,10 +185,12 @@ RUN ln -sf /dev/stdout /var/log/apache2/access.log \
 COPY custom_style_configuration.txt /usr/local/etc
 RUN mkdir /var/lib/mod_tile_driver_day \
  && mkdir /var/lib/mod_tile_general \
- && mkdir /var/lib/mod_tile_retina \
+ && mkdir /var/lib/mod_tile_128 \
+ && mkdir /var/lib/mod_tile_512 \
  && chown renderer /var/lib/mod_tile_driver_day \
  && chown renderer /var/lib/mod_tile_general \
- && chown renderer /var/lib/mod_tile_retina \
+ && chown renderer /var/lib/mod_tile_128 \
+ && chown renderer /var/lib/mod_tile_512 \
  && cat /usr/local/etc/custom_style_configuration.txt >> /usr/local/etc/renderd.conf
 
 # Configure PosgtreSQL

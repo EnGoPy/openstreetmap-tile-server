@@ -1,8 +1,16 @@
 
-[retina]
-URI=/osm_tiles2/
-TILEDIR=/var/lib/mob_tile_retina
-XML=/home/renderer/src/openstreetmap-carto/mapnik_retina.xml
+[128]
+URI=/osm_tiles_128/
+TILEDIR=/var/lib/mob_tile_128
+XML=/home/renderer/src/openstreetmap-carto/mapnik_128.xml
+HOST=localhost
+TILESIZE=128
+MAXZOOM=19
+
+[512]
+URI=/osm_tiles_512/
+TILEDIR=/var/lib/mob_tile_512
+XML=/home/renderer/src/openstreetmap-carto/mapnik_512.xml
 HOST=localhost
 TILESIZE=512
 MAXZOOM=19

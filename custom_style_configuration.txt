@@ -1,4 +1,12 @@
 
+[retina]
+URI=/osm_tiles2/
+TILEDIR=/var/lib/mob_tile_retina
+XML=/home/renderer/src/openstreetmap-carto/mapnik_retina.xml
+HOST=localhost
+TILESIZE=512
+MAXZOOM=19
+
 [general]
 URI=/general/
 TILEDIR=/var/lib/mob_tile_general

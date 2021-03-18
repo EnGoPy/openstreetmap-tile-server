@@ -145,6 +145,7 @@ RUN mkdir -p /home/renderer/src \
 # copy mapnik.xml's to working directory
  && cp -p  /home/renderer/src/general/openstreetmap-carto/mapnik.xml /home/renderer/src/openstreetmap-carto/mapnik_general.xml \
  && cp -p  /home/renderer/src/driver_day/openstreetmap-carto/mapnik.xml /home/renderer/src/openstreetmap-carto/mapnik_driver_day.xml \
+ && cp -p  /home/renderer/src/driver_day/openstreetmap-carto/mapnik.xml /home/renderer/src/openstreetmap-carto/mapnik_retina.xml \
 # remove old repositories data
  && rm -rf /home/renderer/src/general \
  && rm -rf /home/renderer/src/driver_day \
@@ -181,8 +182,10 @@ RUN ln -sf /dev/stdout /var/log/apache2/access.log \
 COPY custom_style_configuration.txt /usr/local/etc
 RUN mkdir /var/lib/mod_tile_driver_day \
  && mkdir /var/lib/mod_tile_general \
+ && mkdir /var/lib/mod_tile_retina \
  && chown renderer /var/lib/mod_tile_driver_day \
  && chown renderer /var/lib/mod_tile_general \
+ && chown renderer /var/lib/mod_tile_retina \
  && cat /usr/local/etc/custom_style_configuration.txt >> /usr/local/etc/renderd.conf
 
 # Configure PosgtreSQL

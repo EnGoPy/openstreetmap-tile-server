@@ -165,10 +165,10 @@ RUN sed -i 's/renderaccount/renderer/g' /usr/local/etc/renderd.conf \
 # Configure Apache
 RUN mkdir /var/lib/mod_tile \
  && chown renderer /var/lib/mod_tile \
- && cp -p /var/lib/mod_tile /var/lib/mod_tile_driver_day \
- && cp -p /var/lib/mod_tile /var/lib/mod_tile_general \
- && cp -p /var/lib/mod_tile /var/lib/mod_tile_128 \
- && cp -p /var/lib/mod_tile /var/lib/mod_tile_512 \
+ && cp -pr /var/lib/mod_tile /var/lib/mod_tile_driver_day \
+ && cp -pr /var/lib/mod_tile /var/lib/mod_tile_general \
+ && cp -pr /var/lib/mod_tile /var/lib/mod_tile_128 \
+ && cp -pr /var/lib/mod_tile /var/lib/mod_tile_512 \
  && mkdir /var/run/renderd \
  && chown renderer /var/run/renderd \
  && echo "LoadModule tile_module /usr/lib/apache2/modules/mod_tile.so" >> /etc/apache2/conf-available/mod_tile.conf \

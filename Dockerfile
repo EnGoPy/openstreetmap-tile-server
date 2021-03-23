@@ -126,7 +126,7 @@ RUN mkdir -p /home/renderer/src \
 RUN mkdir -p /home/renderer/src \
  && mkdir -p /home/renderer/src/copy \
  && cd /home/renderer/src/copy \
- && git clone --single-branch --branch calm_drive_520 https://github.com/EnGoPy/openstreetmap-carto.git  \
+ && git clone --single-branch --branch calm_drive_520_scale https://github.com/EnGoPy/openstreetmap-carto.git  \
  && cd /home/renderer/src \
  && git clone --single-branch --branch v5.2.0 https://github.com/gravitystorm/openstreetmap-carto.git --depth 1 \
  && rm -rf /home/renderer/src/openstreetmap-carto/style \

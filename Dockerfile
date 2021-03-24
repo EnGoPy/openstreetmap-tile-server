@@ -125,16 +125,16 @@ RUN mkdir -p /home/renderer/src \
 # Configure stylesheet
 RUN mkdir -p /home/renderer/src \
  && mkdir -p /home/renderer/src/copy \
- && cd /home/renderer/src/copy \
- && git clone --single-branch --branch calm_drive_520_scale https://github.com/EnGoPy/openstreetmap-carto.git  \
+# && cd /home/renderer/src/copy \
+# && git clone --single-branch --branch calm_drive_520_scale https://github.com/EnGoPy/openstreetmap-carto.git  \
  && cd /home/renderer/src \
- && git clone --single-branch --branch v5.2.0 https://github.com/gravitystorm/openstreetmap-carto.git --depth 1 \
- && rm -rf /home/renderer/src/openstreetmap-carto/style \
+ && git clone --single-branch --branch calm_drive_520_scale https://github.com/EnGoPy/openstreetmap-carto.git --depth 1 \
+# && rm -rf /home/renderer/src/openstreetmap-carto/style \
 # && rm -rf /home/renderer/src/openstreetmap-carto/project.mml \
 # && cp -pr /home/renderer/src/copy/openstreetmap-carto/project.mml /home/renderer/src/openstreetmap-carto \
- && rm -rf /home/renderer/src/openstreetmap-carto/project.mml \
- && cp -pr /home/renderer/src/copy/openstreetmap-carto/project.mml /home/renderer/src/openstreetmap-carto \
- && cp -pr /home/renderer/src/copy/openstreetmap-carto/style /home/renderer/src/openstreetmap-carto \
+# && rm -rf /home/renderer/src/openstreetmap-carto/project.mml \
+# && cp -pr /home/renderer/src/copy/openstreetmap-carto/project.mml /home/renderer/src/openstreetmap-carto \
+# && cp -pr /home/renderer/src/copy/openstreetmap-carto/style /home/renderer/src/openstreetmap-carto \
  && cd /home/renderer/src/openstreetmap-carto \
  && rm -rf .git \
  && npm install -g carto@0.18.2 \

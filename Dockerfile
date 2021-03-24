@@ -132,7 +132,8 @@ RUN mkdir -p /home/renderer/src \
  && rm -rf /home/renderer/src/openstreetmap-carto/style \
 # && rm -rf /home/renderer/src/openstreetmap-carto/project.mml \
 # && cp -pr /home/renderer/src/copy/openstreetmap-carto/project.mml /home/renderer/src/openstreetmap-carto \
- && cp -pr /home/renderer/src/copy/openstreetmap-carto/style /home/renderer/src/openstreetmap-carto \
+ && rm -rf /home/renderer/src/openstreetmap-carto/project.mml \
+ && cp -pr /home/renderer/src/copy/openstreetmap-carto/project.mml /home/renderer/src/openstreetmap-carto \
  && cd /home/renderer/src/openstreetmap-carto \
  && rm -rf .git \
  && npm install -g carto@0.18.2 \

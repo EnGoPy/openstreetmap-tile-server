@@ -137,7 +137,7 @@ RUN mkdir -p /home/renderer/src \
 # && cp -pr /home/renderer/src/copy/openstreetmap-carto/style /home/renderer/src/openstreetmap-carto \
  && cd /home/renderer/src/openstreetmap-carto  \
  && rm -rf .git  \
- && npm install -g carto@0.18.2 \
+ && npm install -g carto@0.18.2  \
  && carto project.mml > mapnik.xml \
  && scripts/get-shapefiles.py \
  && rm /home/renderer/src/openstreetmap-carto/data/*.zip
